@@ -20,7 +20,7 @@ class TKInReview {
     final currentVersion = packageInfo.version;
     final inReviewVersion = inReviewVersionsSnap.value as String;
     print("CurrentVersion:$currentVersion  inReviewVersion:$inReviewVersion");
-    return inReviewVersion == currentVersion;
+    _singleton._isInReview = inReviewVersion == currentVersion;
   }
 
   static bool get isInReview {
