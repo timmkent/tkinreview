@@ -9,6 +9,8 @@ class TKInReview {
     return _singleton;
   }
 
+  bool? _isInReview;
+
   static initialize({required String appShort, required FirebaseDatabase firebaseDatabase}) async {
     final snap = await firebaseDatabase.ref('underReview').child('underReview').get();
     final swfForce = snap.value as bool? ?? false;
@@ -19,5 +21,10 @@ class TKInReview {
     final inReviewVersion = inReviewVersionsSnap.value as String;
     print("CurrentVersion:$currentVersion  inReviewVersion:$inReviewVersion");
     return inReviewVersion == currentVersion;
+  }
+
+  static bool get isInReview {
+    assert(_singleton._isInReview != null, 'TKInReview not correctly initialzed');
+    return _singleton._isInReview!;
   }
 }
